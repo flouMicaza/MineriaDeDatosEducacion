@@ -1,0 +1,50 @@
+---
+title: "Reporte Primer Hito"
+output: html_document
+---
+
+##Introducción
+Se observa que la matrícula universitaria de alumnos de regiones mas pequeñas es menor a la matrícula de alumnos de ciudades mas grandes. A raíz de esto nos cuestionamos si hay algun factor durante la educación básica y media que podría afectar en estos números. Con datos de asistencia y rendimiento de los alumnos chilenos en etapa escolar y el clima mesual de cada localidad se espera encontrar explicaciones a este fenómeno. 
+
+##Descripción de los datos y epxloración inicial
+Los datos que se utilizarán son datos brindados por el ministerío de educación que contienen información de la asistencia y rendimiendo académico de los alumnos de colegios públicos y particulares subvencionados de todo Chile. Por otro lado se trabajará con datos de la dirección meteorológica de Chile que contienen las temperaturas en cada región. Se cruzarán los datos de las temperaturas con los datos de las escuelas por cada región para buscar patrones en la asistencia según el tiempo mensual.  
+
+
+##Temática o problemática central y describir cómo se abordará inicialmente
+###Hipotesis : 
+  * Existen factores socioeconómicos y geográficos que afectan en la asistencia y rendimiento de los almmunos? 
+  * Afecta el género del estudiante y la actividad productiva de la zona en la asistencia a clases? 
+  * Existe una relación entre el clima de una comuna y la asistencia de los alumnos. 
+
+Para abordar la problemática se definirán métricas para poder comparar los datos. Como se trabajará con comunas se normalizarán los datos con la cantidad de habitantes por comuna para hacer comparaciones mas acertadas. La asistencia mensual se agrupará por todos los alumnos de cada comuna usando alguna métrica acorde.  
+
+
+-----------------------------------------------------------------------------
+
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
