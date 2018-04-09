@@ -1,15 +1,12 @@
-asistenciaAgosto2012 <- read.csv(file="Asistencia_agosto_2012_20130208_PUBL.csv", header=TRUE, sep=";",row.names=NULL)
-sumasPorRuralAgosto <- aggregate(DIAS_ASISTIDOS ~ RURAL_RBD, asistenciaAgosto2012, FUN=sum)
-sumasTPorRuralAgosto <- aggregate(DIAS_TRABAJADOS ~ RURAL_RBD, asistenciaAgosto2012, FUN=sum)
-sumasPorRuralFinalAgosto <- merge(sumasTPorRuralAgosto,sumasPorRuralAgosto,by="RURAL_RBD")
-sumasPorRuralFinalAgosto["Promedios"] <- sumasPorRuralFinalAgosto$DIAS_ASISTIDOS/sumasPorRuralFinalAgosto$DIAS_TRABAJADOS 
-sumasPorRuralFinalAgosto["MES_ESCOLAR"]<-c(8,8)
+asistenciaagosto2012 <- read.csv(file="Asistencia_agosto_2012_20130208_PUBL.csv", header=TRUE, sep=";",row.names=NULL)
+asistenciaagosto2012["promAsis"] <- asistenciaagosto2012$DIAS_ASISTIDOS/asistenciaagosto2012$DIAS_TRABAJADOS
+medianaPorRuralagosto <- aggregate(promAsis ~ RURAL_RBD, asistenciaagosto2012, FUN=median)
+sumasPorRuralagosto["MES_ESCOLAR"]<-c(7,7)
 
+ruralxMes <- rbind(sumasPorRuralFinal,sumasPorRuralFinalagosto,sumasPorRuralFinalagosto,sumasPorRuralFinalagosto,sumasPorRuralFinalagosto)
 
-ruralxMes <- rbind(sumasPorRuralFinal,sumasPorRuralFinalAbril,sumasPorRuralFinalMayo,sumasPorRuralFinalJunio,sumasPorRuralFinalAgosto)
-
-ggplot(ruralxMes[ruralxMes$RURAL_RBD==1,], aes(x=MES_ESCOLAR, y=Promedios)) + 
+ggplot(ruralxMes[ruralxMes$RURAL_RBD==1,], aes(x=MES_ESCOLAR, y=promAsis)) + 
     geom_bar(stat="identity") + 
     coord_flip() +
-    ggtitle("Asistencia Urbana x Mes ") + 
-    xlab("Mes") + ylab("Promedio de asistencia")
+    ggtitle("Asistencia Rural x Mes ") + 
+    xlab("Mes") + ylab("Asistencia Media",coord_cartesian(ylim = c(0.9,1))
